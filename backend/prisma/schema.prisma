@@ -1,14 +1,179 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+// Enums
+enum CargoType {
+  LIQUID
+  SOLID
+}
+
+enum ShipmentStatus {
+  PENDING
+  IN_TRANSIT
+  DELIVERED
+  CANCELLED
+  RETURNING
+}
+
+enum SubscriptionPlan {
+  FREE
+  PRO
+  ENTERPRISE
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  company Company?
+
+  @@map("users")
+}
+
+model Company {
+  id               String           @id @default(uuid())
+  tradeName        String
+  legalName        String
+  taxId            String           @unique
+  balance          Decimal          @default(0.00) @db.Decimal(10, 2)
+  supportEmail     String
+  mainPhone        String
+  subscriptionPlan SubscriptionPlan @default(FREE)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  employees  Employee[]
+  trucks     Truck[]
+  shipments  Shipment[]
+  recipients Recipient[]
+
+  @@index([taxId])
+  @@map("companies")
+}
+
+model Employee {
+  id            String   @id @default(uuid())
+  name          String
+  cnh           String   @unique
+  cnhExpiration DateTime @db.Date
+  cpf           String   @unique
+  salary        Decimal  @db.Decimal(10, 2)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  shipments Shipment[]
+
+  @@index([companyId])
+  @@index([cnh])
+  @@index([cpf])
+  @@map("employees")
+}
+
+model Truck {
+  id           String   @id @default(uuid())
+  licensePlate String   @unique
+  maxPayload   Float
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  shipments Shipment[]
+
+  @@index([companyId])
+  @@index([licensePlate])
+  @@map("trucks")
+}
+
+model Recipient {
+  id          String   @id @default(uuid())
+  name        String
+  email       String   @unique
+  phone       String
+  fullAddress String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  shipments Shipment[]
+
+  @@index([companyId])
+  @@index([email])
+  @@map("recipients")
+}
+
+model Shipment {
+  id              String         @id @default(uuid())
+  status          ShipmentStatus @default(PENDING)
+  startLat        Float
+  startLng        Float
+  startAddress    String
+  deliveryLat     Float
+  deliveryLng     Float
+  deliveryAddress String
+  currentLat      Float?
+  currentLng      Float?
+  cargoType       CargoType
+  weight          Float
+  gasSpent        Decimal        @default(0.00) @db.Decimal(10, 2)
+  estimatedProfit Decimal        @default(0.00) @db.Decimal(10, 2)
+  startDate       DateTime
+  endDate         DateTime?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id], onDelete: Restrict)
+
+  truckId String
+  truck   Truck  @relation(fields: [truckId], references: [id], onDelete: Restrict)
+
+  recipientId String
+  recipient   Recipient @relation(fields: [recipientId], references: [id], onDelete: Restrict)
+
+  events ShipmentEvent[]
+
+  @@index([companyId])
+  @@index([employeeId])
+  @@index([truckId])
+  @@index([recipientId])
+  @@index([status])
+  @@map("shipments")
+}
+
+model ShipmentEvent {
+  id          String   @id @default(uuid())
+  latitude    Float
+  longitude   Float
+  description String
+  recordedAt  DateTime @default(now())
+
+  shipmentId String
+  shipment   Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+
+  @@index([shipmentId])
+  @@index([recordedAt])
+  @@map("shipment_events")
 }

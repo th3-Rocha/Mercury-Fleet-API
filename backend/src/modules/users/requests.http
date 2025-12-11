@@ -1,0 +1,37 @@
+### Health-Check
+GET http://localhost:3000/api/health-check
+
+
+
+
+
+### Get Users by ID
+GET http://localhost:3000/api/users/093062fe-c304-42d9-873b-23b41f2aae54
+
+
+
+
+
+### Add Users
+POST http://localhost:3000/api/users
+Content-type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@acme.com",
+  "password": "1990-01-01"
+}
+
+
+### Update User
+PATCH http://localhost:3000/api/users/093062fe-c304-42d9-873b-23b41f2aae54
+Content-type: application/json
+
+{
+  "name": "John Doe 2"
+}
+
+### Delete User by ID
+DELETE  http://localhost:3000/api/users/093062fe-c304-42d9-873b-23b41f2aae54
+Content-type: application/json
+
