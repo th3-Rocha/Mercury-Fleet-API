@@ -1,26 +1,7 @@
 ### Health-Check
 GET http://localhost:3000/api/health-check
 
-
-
-
-
-### Get Users by ID
-GET http://localhost:3000/api/users/093062fe-c304-42d9-873b-23b41f2aae54
-
-
-
-
-
-### Add Users
-POST http://localhost:3000/api/users
-Content-type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john.doe@acme.com",
-  "password": "1990-01-01"
-}
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZTc5MjU5Zi1jZjdiLTRmNWItYmM4NC0yMTRmOGU2YzQxMWYiLCJ1c2VybmFtZSI6ImpvaG4uZG9lNDIzQGFjbWUuY29tIiwiaWF0IjoxNzY1NTc5NDEyLCJleHAiOjE3NjU1ODMwMTJ9.wSjLB9QTy5yVasr9L0k-7lxUFIlp8u04Hid_cE8klSM
 
 
 ### Update User
@@ -31,7 +12,128 @@ Content-type: application/json
   "name": "John Doe 2"
 }
 
-### Delete User by ID
-DELETE  http://localhost:3000/api/users/093062fe-c304-42d9-873b-23b41f2aae54
+
+
+### Register User
+POST http://localhost:3000/api/auth/register
 Content-type: application/json
 
+{
+  "name": "Rbicheiro",
+  "email": "john.doe423@acme.com",
+  "password": "pick-a-strong-password"
+}
+
+
+### Login User
+POST http://localhost:3000/api/auth/login
+Content-type: application/json
+
+{
+  "email": "john.doe423@acme.com",
+  "password": "pick-a-strong-password"
+}
+
+### Get Current Me User
+GET http://localhost:3000/api/users/me
+Authorization: Bearer {{token}}
+
+### Get Current Me Company
+GET http://localhost:3000/api/company/me
+Authorization: Bearer {{token}}
+
+
+### Update Current Me Company
+PATCH http://localhost:3000/api/company/me
+Authorization: Bearer {{token}}
+Content-type: application/json
+
+{
+  "tradeName": "Acme Corporation Updated",
+  "balance": "50000"
+}
+
+### DELETE Current Me User
+DELETE  http://localhost:3000/api/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOTJkMjVlNy1mZjY4LTRlNmItYmIyNi1mYjA3MmM3OGYwMzUiLCJ1c2VybmFtZSI6ImpvaG4uZG9lNDNAYWNtZS5jb20iLCJpYXQiOjE3NjU1NTQyMjcsImV4cCI6MTc2NTU1NzgyN30.tkKbrDVJRB95Jdf09DiiNE_0QXM4fDO-lWAAd4RucbY
+
+### POST An Truck
+POST http://localhost:3000/api/trucks
+Authorization: Bearer {{token}}
+Content-type: application/json
+
+{
+  "licensePlate": "ABC-1235",
+  "maxPayload": 1000
+}
+
+
+### POST An Recipient
+
+POST http://localhost:3000/api/recipients
+Authorization: Bearer {{token}}
+Content-type: application/json
+
+{
+  "name": "maru Smith",
+  "email": "janaae.smith@example.com",
+  "phone": "555-1234",
+  "fullAddress": "rua pindamonhagaba, 123, apt 45, bairro centro, cidade sao paulo, estado SP, cep 01234-567"
+}
+
+### GET All Recipients
+GET http://localhost:3000/api/recipients
+Authorization: Bearer {{token}}
+
+### GET Recipient by ID
+GET http://localhost:3000/api/recipients/recipient-id-here
+Authorization: Bearer {{token}}
+
+### PATCH Update Recipient
+PATCH http://localhost:3000/api/recipients/6f07c2a0-dfcc-4f8c-b2d0-f5c21d0d4dc3
+Authorization: Bearer {{token}}
+Content-type: application/json
+
+{
+  "name": "Jane Smiadfadfath Updated",
+  "phone": "555-5678"
+}
+
+### DELETE Recipient
+DELETE http://localhost:3000/api/recipients/recipient-id-here
+Authorization: Bearer {{token}}
+
+### POST An Employee
+POST http://localhost:3000/api/employees
+Authorization: Bearer {{token}}
+Content-type: application/json
+
+{
+  "name": "John Driver",
+  "cnh": "12345678901",
+  "cnhExpiration": "2026-12-31",
+  "cpf": "12345678901",
+  "salary": 3500
+}
+
+### GET All Employees
+GET http://localhost:3000/api/employees
+Authorization: Bearer {{token}}
+
+### GET Employee by ID
+GET http://localhost:3000/api/employees/employee-id-here
+Authorization: Bearer {{token}}
+
+### PATCH Update Employee
+PATCH http://localhost:3000/api/employees/employee-id-here
+Authorization: Bearer {{token}}
+Content-type: application/json
+
+{
+  "name": "John Driver Updated",
+  "salary": 4000
+}
+
+### DELETE Employee
+DELETE http://localhost:3000/api/employees/employee-id-here
+Authorization: Bearer {{token}}

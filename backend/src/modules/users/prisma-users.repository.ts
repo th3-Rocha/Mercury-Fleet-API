@@ -1,10 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { UsersRepository } from './users.repository';
 import { CreateUserDto } from './dto/create-user.dto';
-import { User } from './entities/user.entity';
 import { PrismaService } from 'src/prisma/prisma.service';
-
-// prisma-users.repository.ts
+import { User } from '@prisma/client';
 @Injectable()
 export class PrismaUsersRepository implements UsersRepository {
   constructor(private prisma: PrismaService) { }
@@ -15,7 +13,8 @@ export class PrismaUsersRepository implements UsersRepository {
     });
   }
 
-  async create(data: CreateUserDto): Promise<User> { //Create user with associated company
+  async create(data: CreateUserDto): Promise<User> {
+    const uniqueTaxId = `TEMP-${Date.now()}-${Math.random().toString(36).substring(7)}`;
     return this.prisma.user.create({
       data: {
         email: data.email,
@@ -25,7 +24,7 @@ export class PrismaUsersRepository implements UsersRepository {
           create: {
             tradeName: `${data.name}'s Company`,
             legalName: `${data.name}'s Company Legal Name`,
-            taxId: 'TEMP-TAX-ID',
+            taxId: uniqueTaxId,
             supportEmail: data.email,
             mainPhone: '000-000-0000'
           }
@@ -42,7 +41,7 @@ export class PrismaUsersRepository implements UsersRepository {
       where: { id },
       data: data,
       include: {
-        company: true
+        company: false
       }
     });
   }
@@ -52,7 +51,7 @@ export class PrismaUsersRepository implements UsersRepository {
     return await this.prisma.user.findUnique({
       where: { id },
       include: {
-        company: true
+        company: false
       }
     });
   }
@@ -61,7 +60,7 @@ export class PrismaUsersRepository implements UsersRepository {
     return await this.prisma.user.delete({
       where: { id },
       include: {
-        company: true
+        company: false
       }
     });
   }
