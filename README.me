@@ -1,1 +1,27 @@
-test
+# 🚀 Mercury Fleet API
+
+API desenvolvida para o gerenciamento de frotas, utilizando uma arquitetura escalável e moderna baseada em Node.js.
+
+## 🛠 Tecnologias Utilizadas
+
+Este projeto utiliza uma stack robusta focada em performance, tipagem segura e facilidade de desenvolvimento:
+
+- **[NestJS](https://nestjs.com/):** Framework principal para construção da API (arquitetura modular e injeção de dependência).
+- **[TypeScript](https://www.typescriptlang.org/):** Superset do JavaScript que adiciona tipagem estática.
+- **[Prisma ORM](https://www.prisma.io/):** ORM moderno para manipulação do banco de dados e migrações.
+- **[Docker](https://www.docker.com/) & Docker Compose:** Containerização da aplicação e serviços auxiliares (Banco de Dados, etc.).
+- **[SWC](https://swc.rs/):** Compilador escrito em Rust, tornando o build e os testes até 20x mais rápidos que o compilador padrão.
+- **ESLint & Prettier:** Ferramentas para garantir a qualidade e padronização do código.
+
+## 📂 Estrutura do Projeto
+
+O projeto segue uma estrutura organizada onde a configuração de infraestrutura fica na raiz e o código da aplicação em uma subpasta:
+
+```text
+mercury-fleet-api/
+├── docker-compose.yml   # Orquestração dos containers
+├── backend/             # Código fonte da API (NestJS)
+│   ├── src/
+│   ├── prisma/
+│   └── ...
+└── .env                 # Variáveis de ambiente globais
