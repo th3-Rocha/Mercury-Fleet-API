@@ -1,7 +1,7 @@
 ### Health-Check
 GET http://localhost:3000/api/health-check
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZTc5MjU5Zi1jZjdiLTRmNWItYmM4NC0yMTRmOGU2YzQxMWYiLCJ1c2VybmFtZSI6ImpvaG4uZG9lNDIzQGFjbWUuY29tIiwiaWF0IjoxNzY1NTc5NDEyLCJleHAiOjE3NjU1ODMwMTJ9.wSjLB9QTy5yVasr9L0k-7lxUFIlp8u04Hid_cE8klSM
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZTc5MjU5Zi1jZjdiLTRmNWItYmM4NC0yMTRmOGU2YzQxMWYiLCJ1c2VybmFtZSI6ImpvaG4uZG9lNDIzQGFjbWUuY29tIiwiaWF0IjoxNzY1Njc5NTkyLCJleHAiOjE3NjU2ODMxOTJ9.8Uy3qG31UFqo2pNIoLhLi70Hi_-Nqh3b6U4CSqxNf7I
 
 
 ### Update User
@@ -63,20 +63,19 @@ Authorization: Bearer {{token}}
 Content-type: application/json
 
 {
-  "licensePlate": "ABC-1235",
+  "licensePlate": "ABC-12352",
   "maxPayload": 1000
 }
 
 
 ### POST An Recipient
-
 POST http://localhost:3000/api/recipients
 Authorization: Bearer {{token}}
 Content-type: application/json
 
 {
-  "name": "maru Smith",
-  "email": "janaae.smith@example.com",
+  "name": "maxu Smith",
+  "email": "janxae.smith@example.com",
   "phone": "555-1234",
   "fullAddress": "rua pindamonhagaba, 123, apt 45, bairro centro, cidade sao paulo, estado SP, cep 01234-567"
 }
@@ -110,9 +109,9 @@ Content-type: application/json
 
 {
   "name": "John Driver",
-  "cnh": "12345678901",
+  "cnh": "12345478901",
   "cnhExpiration": "2026-12-31",
-  "cpf": "12345678901",
+  "cpf": "12343378901",
   "salary": 3500
 }
 
@@ -135,5 +134,62 @@ Content-type: application/json
 }
 
 ### DELETE Employee
-DELETE http://localhost:3000/api/employees/employee-id-here
+DELETE http://localhost:3000/api/employees/ba1cf635-b412-4660-a124-53e4ec96c399
+Authorization: Bearer {{token}}
+
+### POST Create Shipment
+POST http://localhost:3000/api/shipments
+Authorization: Bearer {{token}}
+Content-type: application/json
+
+{
+  "status":"IN_TRANSIT",
+  "startAddress": "123 Main St, New York, NY 10001",
+  "deliveryAddress": "456 Oak Ave, Los Angeles, CA 90001",
+  "startLat": 40.7128,
+  "startLng": -74.0060,
+  "deliveryLat": 34.0522,
+  "deliveryLng": -118.2437,
+  "currentLat": 40.7128,
+  "currentLng": -74.0060,
+  "weight": 520,
+  "cargoType": "SOLID",
+  "startDate": "2025-12-13T10:00:00Z",
+  "endDate": "2025-12-14T18:00:00Z",
+  "estimatedProfit": 1500,
+  "gasSpent": 250,
+  "employeeId": "61550a7d-ff93-458d-b0c2-c8dccf22dc9f",
+  "truckId": "27e62b1b-1f43-46fb-bf75-f7aa93bcd29d",
+  "recipientId": "03433a82-bdc1-48a6-ae25-9e9deace029c"
+}
+
+
+
+### GET All Trucks
+GET http://localhost:3000/api/trucks
+Authorization: Bearer {{token}}
+
+### GET All Shipments
+GET http://localhost:3000/api/shipments
+Authorization: Bearer {{token}}
+
+### GET Shipment by ID
+GET http://localhost:3000/api/shipments/shipment-id-here
+Authorization: Bearer {{token}}
+
+### PATCH Update Shipment
+PATCH http://localhost:3000/api/shipments/shipment-id-here
+Authorization: Bearer {{token}}
+Content-type: application/json
+
+{
+  "deliveryAddress": "789 Pine Rd, Chicago, IL 60601",
+  "currentLat": 41.8781,
+  "currentLng": -87.6298,
+  "estimatedProfit": 1800,
+  "gasSpent": 350
+}
+
+### DELETE Shipment
+DELETE http://localhost:3000/api/shipments/shipment-id-here
 Authorization: Bearer {{token}}

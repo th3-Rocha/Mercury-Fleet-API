@@ -37,4 +37,7 @@ export class PrismaTrucksRepository implements TrucksRepository {
     async delete(id: string): Promise<Truck> {
         return this.prisma.truck.delete({ where: { id } });
     }
+    async findAllByCompanyId(companyId: string): Promise<Truck[]> {
+        return this.prisma.truck.findMany({ where: { companyId } });
+    }
 }

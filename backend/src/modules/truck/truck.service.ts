@@ -65,4 +65,13 @@ export class TruckService {
         await this.trucksRepository.delete(truckId);
         return { message: 'Truck deleted successfully' };
     }
+    async findAllForUserCompany(userId: string) {
+        const company = await this.companyRepository.findByUserId(userId);
+
+        if (!company) {
+            throw new NotFoundException('Company not found for this user');
+        }
+
+        return this.trucksRepository.findAllByCompanyId(company.id);
+    }
 }

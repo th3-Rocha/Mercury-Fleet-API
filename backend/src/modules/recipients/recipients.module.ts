@@ -16,5 +16,6 @@ import { CompanyModule } from '../company/company.module';
       useClass: PrismaRecipientsRepository,
     },
   ],
+  exports: [RecipientsRepository],
 })
 export class RecipientsModule { }

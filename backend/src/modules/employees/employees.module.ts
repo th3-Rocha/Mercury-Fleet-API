@@ -16,5 +16,6 @@ import { CompanyModule } from '../company/company.module';
       useClass: PrismaEmployeesRepository,
     },
   ],
+  exports: [EmployeesRepository],
 })
 export class EmployeesModule { }

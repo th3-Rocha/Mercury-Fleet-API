@@ -8,4 +8,5 @@ export abstract class TrucksRepository {
     abstract findByPlate(licensePlate: string): Promise<Truck | null>;
     abstract update(id: string, data: UpdateTruckDto): Promise<Truck>;
     abstract delete(id: string): Promise<Truck>;
+    abstract findAllByCompanyId(companyId: string): Promise<Truck[]>;
 }

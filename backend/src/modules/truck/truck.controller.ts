@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Param, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { TruckService } from './truck.service';
 import { CreateTruckDto } from './dto/create-truck.dto';
@@ -14,6 +14,11 @@ export class TruckController {
     @Post()
     create(@CurrentUser() user: User, @Body() createTruckDto: CreateTruckDto) {
         return this.truckService.createForUserCompany(user.id, createTruckDto);
+    }
+
+    @Get()
+    findAll(@CurrentUser() user: User) {
+        return this.truckService.findAllForUserCompany(user.id);
     }
 
     @Patch(':id')

@@ -10,6 +10,8 @@ import { CompanyModule } from './modules/company/company.module';
 import { TruckModule } from './modules/truck/truck.module';
 import { RecipientsModule } from './modules/recipients/recipients.module';
 import { EmployeesModule } from './modules/employees/employees.module';
+import { ShipmentsModule } from './modules/shipments/shipments.module';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [
@@ -22,6 +24,24 @@ import { EmployeesModule } from './modules/employees/employees.module';
     TruckModule,
     RecipientsModule,
     EmployeesModule,
+    ShipmentsModule,
+    ThrottlerModule.forRoot([
+      {
+        name: 'short',
+        ttl: 1000,
+        limit: 3,
+      },
+      {
+        name: 'medium',
+        ttl: 10000,
+        limit: 20
+      },
+      {
+        name: 'long',
+        ttl: 60000,
+        limit: 100
+      }
+    ]),
   ],
   controllers: [],
   providers: [
