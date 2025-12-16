@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException, ConflictException } from '@nestjs/common';
 import { CreateRecipientDto } from './dto/create-recipient.dto';
 import { UpdateRecipientDto } from './dto/update-recipient.dto';
 import { RecipientsRepository } from './recipients.repository';
@@ -92,7 +92,14 @@ export class RecipientsService {
       throw new NotFoundException('Recipient not found for this company');
     }
 
-    await this.recipientsRepository.delete(recipientId);
-    return { message: 'Recipient deleted successfully' };
+    try {
+      await this.recipientsRepository.delete(recipientId);
+      return { message: 'Recipient deleted successfully' };
+    } catch (error: any) {
+      if (error.code === 'P2003') {
+        throw new ConflictException('Cannot delete recipient: it is being used in shipments');
+      }
+      throw error;
+    }
   }
 }

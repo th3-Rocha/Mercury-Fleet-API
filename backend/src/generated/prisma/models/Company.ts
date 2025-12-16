@@ -269,6 +269,7 @@ export type CompanyWhereInput = {
   trucks?: Prisma.TruckListRelationFilter
   shipments?: Prisma.ShipmentListRelationFilter
   recipients?: Prisma.RecipientListRelationFilter
+  balanceEvents?: Prisma.BalanceEventListRelationFilter
 }
 
 export type CompanyOrderByWithRelationInput = {
@@ -288,6 +289,7 @@ export type CompanyOrderByWithRelationInput = {
   trucks?: Prisma.TruckOrderByRelationAggregateInput
   shipments?: Prisma.ShipmentOrderByRelationAggregateInput
   recipients?: Prisma.RecipientOrderByRelationAggregateInput
+  balanceEvents?: Prisma.BalanceEventOrderByRelationAggregateInput
 }
 
 export type CompanyWhereUniqueInput = Prisma.AtLeast<{
@@ -310,6 +312,7 @@ export type CompanyWhereUniqueInput = Prisma.AtLeast<{
   trucks?: Prisma.TruckListRelationFilter
   shipments?: Prisma.ShipmentListRelationFilter
   recipients?: Prisma.RecipientListRelationFilter
+  balanceEvents?: Prisma.BalanceEventListRelationFilter
 }, "id" | "taxId" | "userId">
 
 export type CompanyOrderByWithAggregationInput = {
@@ -364,6 +367,7 @@ export type CompanyCreateInput = {
   trucks?: Prisma.TruckCreateNestedManyWithoutCompanyInput
   shipments?: Prisma.ShipmentCreateNestedManyWithoutCompanyInput
   recipients?: Prisma.RecipientCreateNestedManyWithoutCompanyInput
+  balanceEvents?: Prisma.BalanceEventCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateInput = {
@@ -382,6 +386,7 @@ export type CompanyUncheckedCreateInput = {
   trucks?: Prisma.TruckUncheckedCreateNestedManyWithoutCompanyInput
   shipments?: Prisma.ShipmentUncheckedCreateNestedManyWithoutCompanyInput
   recipients?: Prisma.RecipientUncheckedCreateNestedManyWithoutCompanyInput
+  balanceEvents?: Prisma.BalanceEventUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUpdateInput = {
@@ -400,6 +405,7 @@ export type CompanyUpdateInput = {
   trucks?: Prisma.TruckUpdateManyWithoutCompanyNestedInput
   shipments?: Prisma.ShipmentUpdateManyWithoutCompanyNestedInput
   recipients?: Prisma.RecipientUpdateManyWithoutCompanyNestedInput
+  balanceEvents?: Prisma.BalanceEventUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateInput = {
@@ -418,6 +424,7 @@ export type CompanyUncheckedUpdateInput = {
   trucks?: Prisma.TruckUncheckedUpdateManyWithoutCompanyNestedInput
   shipments?: Prisma.ShipmentUncheckedUpdateManyWithoutCompanyNestedInput
   recipients?: Prisma.RecipientUncheckedUpdateManyWithoutCompanyNestedInput
+  balanceEvents?: Prisma.BalanceEventUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyCreateManyInput = {
@@ -621,6 +628,20 @@ export type CompanyUpdateOneRequiredWithoutShipmentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutShipmentsInput, Prisma.CompanyUpdateWithoutShipmentsInput>, Prisma.CompanyUncheckedUpdateWithoutShipmentsInput>
 }
 
+export type CompanyCreateNestedOneWithoutBalanceEventsInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutBalanceEventsInput, Prisma.CompanyUncheckedCreateWithoutBalanceEventsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutBalanceEventsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+}
+
+export type CompanyUpdateOneRequiredWithoutBalanceEventsNestedInput = {
+  create?: Prisma.XOR<Prisma.CompanyCreateWithoutBalanceEventsInput, Prisma.CompanyUncheckedCreateWithoutBalanceEventsInput>
+  connectOrCreate?: Prisma.CompanyCreateOrConnectWithoutBalanceEventsInput
+  upsert?: Prisma.CompanyUpsertWithoutBalanceEventsInput
+  connect?: Prisma.CompanyWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CompanyUpdateToOneWithWhereWithoutBalanceEventsInput, Prisma.CompanyUpdateWithoutBalanceEventsInput>, Prisma.CompanyUncheckedUpdateWithoutBalanceEventsInput>
+}
+
 export type CompanyCreateWithoutUserInput = {
   id?: string
   tradeName: string
@@ -636,6 +657,7 @@ export type CompanyCreateWithoutUserInput = {
   trucks?: Prisma.TruckCreateNestedManyWithoutCompanyInput
   shipments?: Prisma.ShipmentCreateNestedManyWithoutCompanyInput
   recipients?: Prisma.RecipientCreateNestedManyWithoutCompanyInput
+  balanceEvents?: Prisma.BalanceEventCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutUserInput = {
@@ -653,6 +675,7 @@ export type CompanyUncheckedCreateWithoutUserInput = {
   trucks?: Prisma.TruckUncheckedCreateNestedManyWithoutCompanyInput
   shipments?: Prisma.ShipmentUncheckedCreateNestedManyWithoutCompanyInput
   recipients?: Prisma.RecipientUncheckedCreateNestedManyWithoutCompanyInput
+  balanceEvents?: Prisma.BalanceEventUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutUserInput = {
@@ -686,6 +709,7 @@ export type CompanyUpdateWithoutUserInput = {
   trucks?: Prisma.TruckUpdateManyWithoutCompanyNestedInput
   shipments?: Prisma.ShipmentUpdateManyWithoutCompanyNestedInput
   recipients?: Prisma.RecipientUpdateManyWithoutCompanyNestedInput
+  balanceEvents?: Prisma.BalanceEventUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutUserInput = {
@@ -703,6 +727,7 @@ export type CompanyUncheckedUpdateWithoutUserInput = {
   trucks?: Prisma.TruckUncheckedUpdateManyWithoutCompanyNestedInput
   shipments?: Prisma.ShipmentUncheckedUpdateManyWithoutCompanyNestedInput
   recipients?: Prisma.RecipientUncheckedUpdateManyWithoutCompanyNestedInput
+  balanceEvents?: Prisma.BalanceEventUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyCreateWithoutEmployeesInput = {
@@ -720,6 +745,7 @@ export type CompanyCreateWithoutEmployeesInput = {
   trucks?: Prisma.TruckCreateNestedManyWithoutCompanyInput
   shipments?: Prisma.ShipmentCreateNestedManyWithoutCompanyInput
   recipients?: Prisma.RecipientCreateNestedManyWithoutCompanyInput
+  balanceEvents?: Prisma.BalanceEventCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutEmployeesInput = {
@@ -737,6 +763,7 @@ export type CompanyUncheckedCreateWithoutEmployeesInput = {
   trucks?: Prisma.TruckUncheckedCreateNestedManyWithoutCompanyInput
   shipments?: Prisma.ShipmentUncheckedCreateNestedManyWithoutCompanyInput
   recipients?: Prisma.RecipientUncheckedCreateNestedManyWithoutCompanyInput
+  balanceEvents?: Prisma.BalanceEventUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutEmployeesInput = {
@@ -770,6 +797,7 @@ export type CompanyUpdateWithoutEmployeesInput = {
   trucks?: Prisma.TruckUpdateManyWithoutCompanyNestedInput
   shipments?: Prisma.ShipmentUpdateManyWithoutCompanyNestedInput
   recipients?: Prisma.RecipientUpdateManyWithoutCompanyNestedInput
+  balanceEvents?: Prisma.BalanceEventUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutEmployeesInput = {
@@ -787,6 +815,7 @@ export type CompanyUncheckedUpdateWithoutEmployeesInput = {
   trucks?: Prisma.TruckUncheckedUpdateManyWithoutCompanyNestedInput
   shipments?: Prisma.ShipmentUncheckedUpdateManyWithoutCompanyNestedInput
   recipients?: Prisma.RecipientUncheckedUpdateManyWithoutCompanyNestedInput
+  balanceEvents?: Prisma.BalanceEventUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyCreateWithoutTrucksInput = {
@@ -804,6 +833,7 @@ export type CompanyCreateWithoutTrucksInput = {
   employees?: Prisma.EmployeeCreateNestedManyWithoutCompanyInput
   shipments?: Prisma.ShipmentCreateNestedManyWithoutCompanyInput
   recipients?: Prisma.RecipientCreateNestedManyWithoutCompanyInput
+  balanceEvents?: Prisma.BalanceEventCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutTrucksInput = {
@@ -821,6 +851,7 @@ export type CompanyUncheckedCreateWithoutTrucksInput = {
   employees?: Prisma.EmployeeUncheckedCreateNestedManyWithoutCompanyInput
   shipments?: Prisma.ShipmentUncheckedCreateNestedManyWithoutCompanyInput
   recipients?: Prisma.RecipientUncheckedCreateNestedManyWithoutCompanyInput
+  balanceEvents?: Prisma.BalanceEventUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutTrucksInput = {
@@ -854,6 +885,7 @@ export type CompanyUpdateWithoutTrucksInput = {
   employees?: Prisma.EmployeeUpdateManyWithoutCompanyNestedInput
   shipments?: Prisma.ShipmentUpdateManyWithoutCompanyNestedInput
   recipients?: Prisma.RecipientUpdateManyWithoutCompanyNestedInput
+  balanceEvents?: Prisma.BalanceEventUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutTrucksInput = {
@@ -871,6 +903,7 @@ export type CompanyUncheckedUpdateWithoutTrucksInput = {
   employees?: Prisma.EmployeeUncheckedUpdateManyWithoutCompanyNestedInput
   shipments?: Prisma.ShipmentUncheckedUpdateManyWithoutCompanyNestedInput
   recipients?: Prisma.RecipientUncheckedUpdateManyWithoutCompanyNestedInput
+  balanceEvents?: Prisma.BalanceEventUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyCreateWithoutRecipientsInput = {
@@ -888,6 +921,7 @@ export type CompanyCreateWithoutRecipientsInput = {
   employees?: Prisma.EmployeeCreateNestedManyWithoutCompanyInput
   trucks?: Prisma.TruckCreateNestedManyWithoutCompanyInput
   shipments?: Prisma.ShipmentCreateNestedManyWithoutCompanyInput
+  balanceEvents?: Prisma.BalanceEventCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutRecipientsInput = {
@@ -905,6 +939,7 @@ export type CompanyUncheckedCreateWithoutRecipientsInput = {
   employees?: Prisma.EmployeeUncheckedCreateNestedManyWithoutCompanyInput
   trucks?: Prisma.TruckUncheckedCreateNestedManyWithoutCompanyInput
   shipments?: Prisma.ShipmentUncheckedCreateNestedManyWithoutCompanyInput
+  balanceEvents?: Prisma.BalanceEventUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutRecipientsInput = {
@@ -938,6 +973,7 @@ export type CompanyUpdateWithoutRecipientsInput = {
   employees?: Prisma.EmployeeUpdateManyWithoutCompanyNestedInput
   trucks?: Prisma.TruckUpdateManyWithoutCompanyNestedInput
   shipments?: Prisma.ShipmentUpdateManyWithoutCompanyNestedInput
+  balanceEvents?: Prisma.BalanceEventUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutRecipientsInput = {
@@ -955,6 +991,7 @@ export type CompanyUncheckedUpdateWithoutRecipientsInput = {
   employees?: Prisma.EmployeeUncheckedUpdateManyWithoutCompanyNestedInput
   trucks?: Prisma.TruckUncheckedUpdateManyWithoutCompanyNestedInput
   shipments?: Prisma.ShipmentUncheckedUpdateManyWithoutCompanyNestedInput
+  balanceEvents?: Prisma.BalanceEventUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyCreateWithoutShipmentsInput = {
@@ -972,6 +1009,7 @@ export type CompanyCreateWithoutShipmentsInput = {
   employees?: Prisma.EmployeeCreateNestedManyWithoutCompanyInput
   trucks?: Prisma.TruckCreateNestedManyWithoutCompanyInput
   recipients?: Prisma.RecipientCreateNestedManyWithoutCompanyInput
+  balanceEvents?: Prisma.BalanceEventCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyUncheckedCreateWithoutShipmentsInput = {
@@ -989,6 +1027,7 @@ export type CompanyUncheckedCreateWithoutShipmentsInput = {
   employees?: Prisma.EmployeeUncheckedCreateNestedManyWithoutCompanyInput
   trucks?: Prisma.TruckUncheckedCreateNestedManyWithoutCompanyInput
   recipients?: Prisma.RecipientUncheckedCreateNestedManyWithoutCompanyInput
+  balanceEvents?: Prisma.BalanceEventUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type CompanyCreateOrConnectWithoutShipmentsInput = {
@@ -1022,6 +1061,7 @@ export type CompanyUpdateWithoutShipmentsInput = {
   employees?: Prisma.EmployeeUpdateManyWithoutCompanyNestedInput
   trucks?: Prisma.TruckUpdateManyWithoutCompanyNestedInput
   recipients?: Prisma.RecipientUpdateManyWithoutCompanyNestedInput
+  balanceEvents?: Prisma.BalanceEventUpdateManyWithoutCompanyNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutShipmentsInput = {
@@ -1039,6 +1079,95 @@ export type CompanyUncheckedUpdateWithoutShipmentsInput = {
   employees?: Prisma.EmployeeUncheckedUpdateManyWithoutCompanyNestedInput
   trucks?: Prisma.TruckUncheckedUpdateManyWithoutCompanyNestedInput
   recipients?: Prisma.RecipientUncheckedUpdateManyWithoutCompanyNestedInput
+  balanceEvents?: Prisma.BalanceEventUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyCreateWithoutBalanceEventsInput = {
+  id?: string
+  tradeName: string
+  legalName: string
+  taxId: string
+  balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  supportEmail: string
+  mainPhone: string
+  subscriptionPlan?: $Enums.SubscriptionPlan
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutCompanyInput
+  employees?: Prisma.EmployeeCreateNestedManyWithoutCompanyInput
+  trucks?: Prisma.TruckCreateNestedManyWithoutCompanyInput
+  shipments?: Prisma.ShipmentCreateNestedManyWithoutCompanyInput
+  recipients?: Prisma.RecipientCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyUncheckedCreateWithoutBalanceEventsInput = {
+  id?: string
+  tradeName: string
+  legalName: string
+  taxId: string
+  balance?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  supportEmail: string
+  mainPhone: string
+  subscriptionPlan?: $Enums.SubscriptionPlan
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  userId: string
+  employees?: Prisma.EmployeeUncheckedCreateNestedManyWithoutCompanyInput
+  trucks?: Prisma.TruckUncheckedCreateNestedManyWithoutCompanyInput
+  shipments?: Prisma.ShipmentUncheckedCreateNestedManyWithoutCompanyInput
+  recipients?: Prisma.RecipientUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type CompanyCreateOrConnectWithoutBalanceEventsInput = {
+  where: Prisma.CompanyWhereUniqueInput
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutBalanceEventsInput, Prisma.CompanyUncheckedCreateWithoutBalanceEventsInput>
+}
+
+export type CompanyUpsertWithoutBalanceEventsInput = {
+  update: Prisma.XOR<Prisma.CompanyUpdateWithoutBalanceEventsInput, Prisma.CompanyUncheckedUpdateWithoutBalanceEventsInput>
+  create: Prisma.XOR<Prisma.CompanyCreateWithoutBalanceEventsInput, Prisma.CompanyUncheckedCreateWithoutBalanceEventsInput>
+  where?: Prisma.CompanyWhereInput
+}
+
+export type CompanyUpdateToOneWithWhereWithoutBalanceEventsInput = {
+  where?: Prisma.CompanyWhereInput
+  data: Prisma.XOR<Prisma.CompanyUpdateWithoutBalanceEventsInput, Prisma.CompanyUncheckedUpdateWithoutBalanceEventsInput>
+}
+
+export type CompanyUpdateWithoutBalanceEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  taxId?: Prisma.StringFieldUpdateOperationsInput | string
+  balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  supportEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  mainPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  subscriptionPlan?: Prisma.EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutCompanyNestedInput
+  employees?: Prisma.EmployeeUpdateManyWithoutCompanyNestedInput
+  trucks?: Prisma.TruckUpdateManyWithoutCompanyNestedInput
+  shipments?: Prisma.ShipmentUpdateManyWithoutCompanyNestedInput
+  recipients?: Prisma.RecipientUpdateManyWithoutCompanyNestedInput
+}
+
+export type CompanyUncheckedUpdateWithoutBalanceEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tradeName?: Prisma.StringFieldUpdateOperationsInput | string
+  legalName?: Prisma.StringFieldUpdateOperationsInput | string
+  taxId?: Prisma.StringFieldUpdateOperationsInput | string
+  balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  supportEmail?: Prisma.StringFieldUpdateOperationsInput | string
+  mainPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  subscriptionPlan?: Prisma.EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  employees?: Prisma.EmployeeUncheckedUpdateManyWithoutCompanyNestedInput
+  trucks?: Prisma.TruckUncheckedUpdateManyWithoutCompanyNestedInput
+  shipments?: Prisma.ShipmentUncheckedUpdateManyWithoutCompanyNestedInput
+  recipients?: Prisma.RecipientUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 
@@ -1051,6 +1180,7 @@ export type CompanyCountOutputType = {
   trucks: number
   shipments: number
   recipients: number
+  balanceEvents: number
 }
 
 export type CompanyCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1058,6 +1188,7 @@ export type CompanyCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   trucks?: boolean | CompanyCountOutputTypeCountTrucksArgs
   shipments?: boolean | CompanyCountOutputTypeCountShipmentsArgs
   recipients?: boolean | CompanyCountOutputTypeCountRecipientsArgs
+  balanceEvents?: boolean | CompanyCountOutputTypeCountBalanceEventsArgs
 }
 
 /**
@@ -1098,6 +1229,13 @@ export type CompanyCountOutputTypeCountRecipientsArgs<ExtArgs extends runtime.Ty
   where?: Prisma.RecipientWhereInput
 }
 
+/**
+ * CompanyCountOutputType without action
+ */
+export type CompanyCountOutputTypeCountBalanceEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BalanceEventWhereInput
+}
+
 
 export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1116,6 +1254,7 @@ export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   trucks?: boolean | Prisma.Company$trucksArgs<ExtArgs>
   shipments?: boolean | Prisma.Company$shipmentsArgs<ExtArgs>
   recipients?: boolean | Prisma.Company$recipientsArgs<ExtArgs>
+  balanceEvents?: boolean | Prisma.Company$balanceEventsArgs<ExtArgs>
   _count?: boolean | Prisma.CompanyCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["company"]>
 
@@ -1170,6 +1309,7 @@ export type CompanyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   trucks?: boolean | Prisma.Company$trucksArgs<ExtArgs>
   shipments?: boolean | Prisma.Company$shipmentsArgs<ExtArgs>
   recipients?: boolean | Prisma.Company$recipientsArgs<ExtArgs>
+  balanceEvents?: boolean | Prisma.Company$balanceEventsArgs<ExtArgs>
   _count?: boolean | Prisma.CompanyCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CompanyIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1187,6 +1327,7 @@ export type $CompanyPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     trucks: Prisma.$TruckPayload<ExtArgs>[]
     shipments: Prisma.$ShipmentPayload<ExtArgs>[]
     recipients: Prisma.$RecipientPayload<ExtArgs>[]
+    balanceEvents: Prisma.$BalanceEventPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1599,6 +1740,7 @@ export interface Prisma__CompanyClient<T, Null = never, ExtArgs extends runtime.
   trucks<T extends Prisma.Company$trucksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$trucksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TruckPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   shipments<T extends Prisma.Company$shipmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$shipmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ShipmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   recipients<T extends Prisma.Company$recipientsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$recipientsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecipientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  balanceEvents<T extends Prisma.Company$balanceEventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Company$balanceEventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BalanceEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2128,6 +2270,30 @@ export type Company$recipientsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.RecipientScalarFieldEnum | Prisma.RecipientScalarFieldEnum[]
+}
+
+/**
+ * Company.balanceEvents
+ */
+export type Company$balanceEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BalanceEvent
+   */
+  select?: Prisma.BalanceEventSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BalanceEvent
+   */
+  omit?: Prisma.BalanceEventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BalanceEventInclude<ExtArgs> | null
+  where?: Prisma.BalanceEventWhereInput
+  orderBy?: Prisma.BalanceEventOrderByWithRelationInput | Prisma.BalanceEventOrderByWithRelationInput[]
+  cursor?: Prisma.BalanceEventWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BalanceEventScalarFieldEnum | Prisma.BalanceEventScalarFieldEnum[]
 }
 
 /**

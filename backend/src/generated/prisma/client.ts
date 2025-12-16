@@ -72,3 +72,8 @@ export type Shipment = Prisma.ShipmentModel
  * 
  */
 export type ShipmentEvent = Prisma.ShipmentEventModel
+/**
+ * Model BalanceEvent
+ * 
+ */
+export type BalanceEvent = Prisma.BalanceEventModel

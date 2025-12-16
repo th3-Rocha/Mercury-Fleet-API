@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException, ConflictException } from '@nestjs/common';
 import { CreateTruckDto } from './dto/create-truck.dto';
 import { TrucksRepository } from './trucks.repository';
 import { CompanyRepository } from '../company/company.repository';
@@ -62,8 +62,15 @@ export class TruckService {
             throw new NotFoundException('Truck not found for this company');
         }
 
-        await this.trucksRepository.delete(truckId);
-        return { message: 'Truck deleted successfully' };
+        try {
+            await this.trucksRepository.delete(truckId);
+            return { message: 'Truck deleted successfully' };
+        } catch (error: any) {
+            if (error.code === 'P2003') {
+                throw new ConflictException('Cannot delete truck: it is being used in shipments');
+            }
+            throw error;
+        }
     }
     async findAllForUserCompany(userId: string) {
         const company = await this.companyRepository.findByUserId(userId);

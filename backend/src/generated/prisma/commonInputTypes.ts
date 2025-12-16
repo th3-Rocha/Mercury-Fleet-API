@@ -234,6 +234,23 @@ export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>
 }
 
+export type EnumBalanceEventTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.BalanceEventType | Prisma.EnumBalanceEventTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.BalanceEventType[] | Prisma.ListEnumBalanceEventTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BalanceEventType[] | Prisma.ListEnumBalanceEventTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBalanceEventTypeFilter<$PrismaModel> | $Enums.BalanceEventType
+}
+
+export type EnumBalanceEventTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.BalanceEventType | Prisma.EnumBalanceEventTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.BalanceEventType[] | Prisma.ListEnumBalanceEventTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BalanceEventType[] | Prisma.ListEnumBalanceEventTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBalanceEventTypeWithAggregatesFilter<$PrismaModel> | $Enums.BalanceEventType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumBalanceEventTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumBalanceEventTypeFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -467,6 +484,23 @@ export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumBalanceEventTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.BalanceEventType | Prisma.EnumBalanceEventTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.BalanceEventType[] | Prisma.ListEnumBalanceEventTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BalanceEventType[] | Prisma.ListEnumBalanceEventTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBalanceEventTypeFilter<$PrismaModel> | $Enums.BalanceEventType
+}
+
+export type NestedEnumBalanceEventTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.BalanceEventType | Prisma.EnumBalanceEventTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.BalanceEventType[] | Prisma.ListEnumBalanceEventTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BalanceEventType[] | Prisma.ListEnumBalanceEventTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBalanceEventTypeWithAggregatesFilter<$PrismaModel> | $Enums.BalanceEventType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumBalanceEventTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumBalanceEventTypeFilter<$PrismaModel>
 }
 
 

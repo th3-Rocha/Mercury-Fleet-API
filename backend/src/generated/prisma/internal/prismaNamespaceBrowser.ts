@@ -57,7 +57,8 @@ export const ModelName = {
   Truck: 'Truck',
   Recipient: 'Recipient',
   Shipment: 'Shipment',
-  ShipmentEvent: 'ShipmentEvent'
+  ShipmentEvent: 'ShipmentEvent',
+  BalanceEvent: 'BalanceEvent'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -184,6 +185,18 @@ export const ShipmentEventScalarFieldEnum = {
 } as const
 
 export type ShipmentEventScalarFieldEnum = (typeof ShipmentEventScalarFieldEnum)[keyof typeof ShipmentEventScalarFieldEnum]
+
+
+export const BalanceEventScalarFieldEnum = {
+  id: 'id',
+  amount: 'amount',
+  description: 'description',
+  type: 'type',
+  occurredAt: 'occurredAt',
+  companyId: 'companyId'
+} as const
+
+export type BalanceEventScalarFieldEnum = (typeof BalanceEventScalarFieldEnum)[keyof typeof BalanceEventScalarFieldEnum]
 
 
 export const SortOrder = {

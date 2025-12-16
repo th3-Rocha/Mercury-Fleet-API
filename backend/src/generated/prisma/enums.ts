@@ -28,6 +28,26 @@ export const ShipmentStatus = {
 export type ShipmentStatus = (typeof ShipmentStatus)[keyof typeof ShipmentStatus]
 
 
+export const BalanceEventType = {
+  VEHICLE_MAINTENANCE: 'VEHICLE_MAINTENANCE',
+  FUEL: 'FUEL',
+  FOOD: 'FOOD',
+  TOLL: 'TOLL',
+  INSURANCE: 'INSURANCE',
+  TAX: 'TAX',
+  SALARY: 'SALARY',
+  MARKETING: 'MARKETING',
+  SOFTWARE: 'SOFTWARE',
+  UTILITIES: 'UTILITIES',
+  OTHER_EXPENSE: 'OTHER_EXPENSE',
+  FREIGHT_INCOME: 'FREIGHT_INCOME',
+  ASSET_SALE: 'ASSET_SALE',
+  OTHER_INCOME: 'OTHER_INCOME'
+} as const
+
+export type BalanceEventType = (typeof BalanceEventType)[keyof typeof BalanceEventType]
+
+
 export const SubscriptionPlan = {
   FREE: 'FREE',
   PRO: 'PRO',

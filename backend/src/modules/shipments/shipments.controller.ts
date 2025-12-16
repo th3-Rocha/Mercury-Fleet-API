@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Put } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { ShipmentsService } from './shipments.service';
 import { CreateShipmentDto } from './dto/create-shipment.dto';
@@ -26,7 +26,7 @@ export class ShipmentsController {
     return this.shipmentsService.findOneForUserCompany(user.id, id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(
     @CurrentUser() user: User,
     @Param('id') id: string,

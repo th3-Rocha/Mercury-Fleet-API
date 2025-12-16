@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { ConflictException, Injectable, UnauthorizedException, NotFoundException } from '@nestjs/common';
 import { UsersRepository } from '../users/users.repository';
 import { registerUserDto } from './dto/register.dto';
 import { JwtService } from '@nestjs/jwt';
@@ -56,8 +56,19 @@ export class AuthService {
 
 
     async logout(): Promise<{ message: string }> {
-
+        
         return { message: 'Logout successful' };
+    }
+
+    async validateToken(userId: string): Promise<{ valid: boolean; user: { id: string; email: string; name: string } }> {
+        const user = await this.usersRepository.findById(userId);
+        if (!user) {
+            throw new NotFoundException('User not found');
+        }
+        return {
+            valid: true,
+            user: { id: user.id, email: user.email, name: user.name },
+        };
     }
 
 }

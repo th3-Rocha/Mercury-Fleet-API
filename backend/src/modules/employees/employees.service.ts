@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException, ConflictException } from '@nestjs/common';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
 import { EmployeesRepository } from './employees.repository';
@@ -104,7 +104,14 @@ export class EmployeesService {
       throw new NotFoundException('Employee not found for this company');
     }
 
-    await this.employeesRepository.delete(employeeId);
-    return { message: 'Employee deleted successfully' };
+    try {
+      await this.employeesRepository.delete(employeeId);
+      return { message: 'Employee deleted successfully' };
+    } catch (error: any) {
+      if (error.code === 'P2003') {
+        throw new ConflictException('Cannot delete employee: they are assigned to active shipments');
+      }
+      throw error;
+    }
   }
 }

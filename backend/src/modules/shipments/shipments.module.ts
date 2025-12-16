@@ -19,5 +19,6 @@ import { RecipientsModule } from '../recipients/recipients.module';
       useClass: PrismaShipmentsRepository,
     },
   ],
+  exports: [ShipmentsRepository],
 })
 export class ShipmentsModule { }

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Employee } from '@prisma/client';
+import { Employee, Prisma } from '@prisma/client';
 import { EmployeesRepository } from './employees.repository';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
@@ -17,7 +17,7 @@ export class PrismaEmployeesRepository implements EmployeesRepository {
                 cnh: data.cnh,
                 cnhExpiration: new Date(data.cnhExpiration),
                 cpf: data.cpf,
-                salary: data.salary,
+                salary: new Prisma.Decimal(data.salary),
             },
         });
     }

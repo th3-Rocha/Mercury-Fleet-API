@@ -390,7 +390,8 @@ export const ModelName = {
   Truck: 'Truck',
   Recipient: 'Recipient',
   Shipment: 'Shipment',
-  ShipmentEvent: 'ShipmentEvent'
+  ShipmentEvent: 'ShipmentEvent',
+  BalanceEvent: 'BalanceEvent'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -406,7 +407,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "company" | "employee" | "truck" | "recipient" | "shipment" | "shipmentEvent"
+    modelProps: "user" | "company" | "employee" | "truck" | "recipient" | "shipment" | "shipmentEvent" | "balanceEvent"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -928,6 +929,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    BalanceEvent: {
+      payload: Prisma.$BalanceEventPayload<ExtArgs>
+      fields: Prisma.BalanceEventFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BalanceEventFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BalanceEventPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BalanceEventFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BalanceEventPayload>
+        }
+        findFirst: {
+          args: Prisma.BalanceEventFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BalanceEventPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BalanceEventFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BalanceEventPayload>
+        }
+        findMany: {
+          args: Prisma.BalanceEventFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BalanceEventPayload>[]
+        }
+        create: {
+          args: Prisma.BalanceEventCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BalanceEventPayload>
+        }
+        createMany: {
+          args: Prisma.BalanceEventCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BalanceEventCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BalanceEventPayload>[]
+        }
+        delete: {
+          args: Prisma.BalanceEventDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BalanceEventPayload>
+        }
+        update: {
+          args: Prisma.BalanceEventUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BalanceEventPayload>
+        }
+        deleteMany: {
+          args: Prisma.BalanceEventDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BalanceEventUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BalanceEventUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BalanceEventPayload>[]
+        }
+        upsert: {
+          args: Prisma.BalanceEventUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BalanceEventPayload>
+        }
+        aggregate: {
+          args: Prisma.BalanceEventAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBalanceEvent>
+        }
+        groupBy: {
+          args: Prisma.BalanceEventGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BalanceEventGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BalanceEventCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BalanceEventCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1077,6 +1152,18 @@ export const ShipmentEventScalarFieldEnum = {
 export type ShipmentEventScalarFieldEnum = (typeof ShipmentEventScalarFieldEnum)[keyof typeof ShipmentEventScalarFieldEnum]
 
 
+export const BalanceEventScalarFieldEnum = {
+  id: 'id',
+  amount: 'amount',
+  description: 'description',
+  type: 'type',
+  occurredAt: 'occurredAt',
+  companyId: 'companyId'
+} as const
+
+export type BalanceEventScalarFieldEnum = (typeof BalanceEventScalarFieldEnum)[keyof typeof BalanceEventScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1206,6 +1293,20 @@ export type ListEnumCargoTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
 
 
 /**
+ * Reference to a field of type 'BalanceEventType'
+ */
+export type EnumBalanceEventTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BalanceEventType'>
+    
+
+
+/**
+ * Reference to a field of type 'BalanceEventType[]'
+ */
+export type ListEnumBalanceEventTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BalanceEventType[]'>
+    
+
+
+/**
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -1320,6 +1421,7 @@ export type GlobalOmitConfig = {
   recipient?: Prisma.RecipientOmit
   shipment?: Prisma.ShipmentOmit
   shipmentEvent?: Prisma.ShipmentEventOmit
+  balanceEvent?: Prisma.BalanceEventOmit
 }
 
 /* Types for Logging */
