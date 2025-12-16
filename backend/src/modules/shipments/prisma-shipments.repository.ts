@@ -27,6 +27,11 @@ export class PrismaShipmentsRepository implements ShipmentsRepository {
     async findAll(): Promise<Shipment[]> {
         return this.prisma.shipment.findMany();
     }
+    async findAllByCompany(companyId: string): Promise<Shipment[]> {
+        return this.prisma.shipment.findMany({
+            where: { companyId },
+        });
+    }
     async delete(id: string): Promise<Shipment> {
         return this.prisma.shipment.delete({ where: { id } });
     }

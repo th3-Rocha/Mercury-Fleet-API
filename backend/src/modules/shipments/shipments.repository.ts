@@ -8,4 +8,5 @@ export abstract class ShipmentsRepository {
     abstract update(id: string, data: Partial<CreateShipmentDto>): Promise<Shipment>;
     abstract delete(id: string): Promise<Shipment>;
     abstract findAll(): Promise<Shipment[]>;
+    abstract findAllByCompany(companyId: string): Promise<Shipment[]>;
 }

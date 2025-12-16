@@ -32,14 +32,14 @@ export class ShipmentsService {
       this.recipientRepository.findById(createShipmentDto.recipientId),
     ]);
 
-    if (!employee) {
-      throw new BadRequestException('Employee not found');
+    if (!employee || employee.companyId !== company.id) {
+      throw new BadRequestException('Employee not found or does not belong to your company');
     }
-    if (!truck) {
-      throw new BadRequestException('Truck not found');
+    if (!truck || truck.companyId !== company.id) {
+      throw new BadRequestException('Truck not found or does not belong to your company');
     }
-    if (!recipient) {
-      throw new BadRequestException('Recipient not found');
+    if (!recipient || recipient.companyId !== company.id) {
+      throw new BadRequestException('Recipient not found or does not belong to your company');
     }
 
     return this.shipmentsRepository.createForCompany(company.id, createShipmentDto);
@@ -52,7 +52,7 @@ export class ShipmentsService {
       throw new NotFoundException('Company not found for this user');
     }
 
-    return this.shipmentsRepository.findAll();
+    return this.shipmentsRepository.findAllByCompany(company.id);
   }
 
   async findOneForUserCompany(userId: string, id: string): Promise<Shipment> {
@@ -66,6 +66,11 @@ export class ShipmentsService {
     if (!shipment) {
       throw new NotFoundException(`Shipment with id ${id} not found`);
     }
+
+    if (shipment.companyId !== company.id) {
+      throw new NotFoundException(`Shipment with id ${id} not found`);
+    }
+
     return shipment;
   }
 
@@ -82,25 +87,29 @@ export class ShipmentsService {
       throw new NotFoundException(`Shipment with id ${id} not found`);
     }
 
+    if (shipment.companyId !== company.id) {
+      throw new NotFoundException(`Shipment with id ${id} not found`);
+    }
+
     // Validate related entities if they are provided in the update
     if (updateShipmentDto.employeeId) {
       const employee = await this.employeeRepository.findById(updateShipmentDto.employeeId);
-      if (!employee) {
-        throw new BadRequestException('Employee not found');
+      if (!employee || employee.companyId !== company.id) {
+        throw new BadRequestException('Employee not found or does not belong to your company');
       }
     }
 
     if (updateShipmentDto.truckId) {
       const truck = await this.trucksRepository.findById(updateShipmentDto.truckId);
-      if (!truck) {
-        throw new BadRequestException('Truck not found');
+      if (!truck || truck.companyId !== company.id) {
+        throw new BadRequestException('Truck not found or does not belong to your company');
       }
     }
 
     if (updateShipmentDto.recipientId) {
       const recipient = await this.recipientRepository.findById(updateShipmentDto.recipientId);
-      if (!recipient) {
-        throw new BadRequestException('Recipient not found');
+      if (!recipient || recipient.companyId !== company.id) {
+        throw new BadRequestException('Recipient not found or does not belong to your company');
       }
     }
 
@@ -117,6 +126,10 @@ export class ShipmentsService {
     // Validate that shipment exists
     const shipment = await this.shipmentsRepository.findById(id);
     if (!shipment) {
+      throw new NotFoundException(`Shipment with id ${id} not found`);
+    }
+
+    if (shipment.companyId !== company.id) {
       throw new NotFoundException(`Shipment with id ${id} not found`);
     }
 
