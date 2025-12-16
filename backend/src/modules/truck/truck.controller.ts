@@ -21,6 +21,11 @@ export class TruckController {
         return this.truckService.findAllForUserCompany(user.id);
     }
 
+    @Get(':id')
+    findOne(@CurrentUser() user: User, @Param('id') id: string) {
+        return this.truckService.findOneForUserCompany(user.id, id);
+    }
+
     @Patch(':id')
     update(
         @CurrentUser() user: User,

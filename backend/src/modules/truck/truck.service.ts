@@ -81,4 +81,20 @@ export class TruckService {
 
         return this.trucksRepository.findAllByCompanyId(company.id);
     }
+
+    async findOneForUserCompany(userId: string, truckId: string) {
+        const company = await this.companyRepository.findByUserId(userId);
+
+        if (!company) {
+            throw new NotFoundException('Company not found for this user');
+        }
+
+        const truck = await this.trucksRepository.findById(truckId);
+
+        if (!truck || truck.companyId !== company.id) {
+            throw new NotFoundException('Truck not found for this company');
+        }
+
+        return truck;
+    }
 }
