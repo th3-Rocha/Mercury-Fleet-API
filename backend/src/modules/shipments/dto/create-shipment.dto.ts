@@ -1,13 +1,15 @@
-import { IsNumber, IsPositive, IsString, IsEnum, IsOptional, IsDate } from "class-validator";
+import { IsNumber, IsPositive, IsString, IsEnum, IsOptional, IsDate, MaxLength } from "class-validator";
 import { Type } from "class-transformer";
 import { CargoType } from "@prisma/client";
 import { ShipmentStatus } from "src/generated/prisma/enums";
 
 export class CreateShipmentDto {
     @IsString()
+    @MaxLength(200, { message: 'Delivery address must not exceed 200 characters' })
     deliveryAddress: string;
 
     @IsString()
+    @MaxLength(200, { message: 'Start address must not exceed 200 characters' })
     startAddress: string;
 
     @IsNumber()
@@ -58,11 +60,14 @@ export class CreateShipmentDto {
     cargoType: CargoType;
 
     @IsString()
+    @MaxLength(36, { message: 'Employee ID must not exceed 36 characters' })
     employeeId: string;
 
     @IsString()
+    @MaxLength(36, { message: 'Truck ID must not exceed 36 characters' })
     truckId: string;
 
     @IsString()
+    @MaxLength(36, { message: 'Recipient ID must not exceed 36 characters' })
     recipientId: string;
 }

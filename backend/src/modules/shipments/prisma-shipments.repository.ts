@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { ShipmentsRepository } from "./shipments.repository";
 import { CreateShipmentDto } from "./dto/create-shipment.dto";
+import { UpdateShipmentDto } from "./dto/update-shipment.dto";
 import { Shipment } from "@prisma/client";
 
 @Injectable()
@@ -35,7 +36,7 @@ export class PrismaShipmentsRepository implements ShipmentsRepository {
     async delete(id: string): Promise<Shipment> {
         return this.prisma.shipment.delete({ where: { id } });
     }
-    async update(id: string, data: Partial<CreateShipmentDto>): Promise<Shipment> {
+    async update(id: string, data: UpdateShipmentDto): Promise<Shipment> {
         const { employeeId, truckId, recipientId, ...normalFields } = data;
 
         return this.prisma.shipment.update({

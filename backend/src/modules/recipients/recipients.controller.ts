@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Put } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { RecipientsService } from './recipients.service';
 import { CreateRecipientDto } from './dto/create-recipient.dto';
@@ -26,7 +26,7 @@ export class RecipientsController {
     return this.recipientsService.findOneForUserCompany(user.id, id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(
     @CurrentUser() user: User,
     @Param('id') id: string,
