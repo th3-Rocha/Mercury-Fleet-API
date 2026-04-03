@@ -1,19 +1,34 @@
-# 🚀 Mercury Fleet API
+# Mercury Fleet API
 
-API developed for fleet management, using a scalable and modern architecture based on Node.js.
+NestJS API project created **for studying and practicing NestJS**.
 
-## 🛠 Technologies Used
+> This repository is intended as a learning sandbox. Read the code, explore the modules, and use it as a reference for your own experiments.
 
-This project uses a robust stack focused on performance, type safety, and ease of development:
+## About
 
-- **[NestJS](https://nestjs.com/):** Main framework for building the API (modular architecture and dependency injection).
-- **[TypeScript](https://www.typescriptlang.org/):** JavaScript superset that adds static typing.
-- **[Prisma ORM](https://www.prisma.io/):** Modern ORM for database manipulation and migrations.
-- **[Docker](https://www.docker.com/) & Docker Compose:** Containerization of the application and auxiliary services (Database, etc.).
-- **[SWC](https://swc.rs/):** Compiler written in Rust, making builds and tests up to 20x faster than the standard compiler.
-- **ESLint & Prettier:** Tools to ensure code quality and standardization.
+**Mercury Fleet API** is a REST API built with **NestJS (TypeScript)**. It demonstrates common backend patterns and integrations such as:
 
-## 📂 Project Structure
+- Modular architecture with controllers, services, and providers
+- Configuration management via `@nestjs/config`
+- Authentication with JWT (`@nestjs/jwt`, `passport-jwt`)
+- API documentation with Swagger (`@nestjs/swagger`)
+- Rate limiting / throttling (`@nestjs/throttler`)
+- Database access using Prisma (`@prisma/client`, `prisma`)
 
-The project follows an organized structure where infrastructure configuration is at the root and application code is in a subfolder:
+## Repository structure
 
+- `backend/` — NestJS application source code
+- `package.json` (root) — helper scripts to build/start the backend
+
+## Getting started
+
+### Requirements
+
+- Node.js **18+**
+- npm **9+**
+
+### Install
+
+```bash
+cd backend
+npm install
